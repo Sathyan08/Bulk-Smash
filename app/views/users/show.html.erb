@@ -4,7 +4,7 @@
 <ul>
   <% @user.friends.each do |friend| %>
     <li>
-    <%= link_to friend.email, user_path(friend) %>
+      <%= link_to friend.email, user_path(friend) %>
     </li>
   <% end %>
 </ul>

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
     member do
-      get 'request', to: 'requests#send_request'
-      get 'accept', to: 'requests#accept_request'
+      get 'request', to: 'friendships#send_request'
+      get 'accept', to: 'friendships#accept_request'
     end
   end
 
