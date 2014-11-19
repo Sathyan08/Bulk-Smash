@@ -13,7 +13,22 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def friends
-    friendees + frienders
+
+    friends_array = []
+
+    friendships_received.each do |friendship_received|
+      if friendships_received.accepted
+        friends << friendship_received.user
+      end
+    end
+
+    friendships_requested.each do |friendships_requested|
+      if friendships_requested.accepted
+        friends << friendship_received.friendee
+      end
+    end
+
+    friends_array
   end
 
 end
