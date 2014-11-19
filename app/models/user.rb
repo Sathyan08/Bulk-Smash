@@ -17,13 +17,13 @@ class User < ActiveRecord::Base
     friends_array = []
 
     friendships_received.each do |friendship_received|
-      if friendships_received.accepted
+      if friendship_received.accepted
         friends << friendship_received.user
       end
     end
 
     friendships_requested.each do |friendships_requested|
-      if friendships_requested.accepted
+      if friendship_requested.accepted
         friends << friendship_received.friendee
       end
     end
