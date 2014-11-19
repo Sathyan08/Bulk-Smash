@@ -1,10 +1,5 @@
 class User < ActiveRecord::Base
 
-  # has_many :reviews_written, class_name: "Review", foreign_key: :user_id
-  # has_many :reviewees, through: :reviews_written, source: :reviewee
-
-  # has_many :reviews_received, class_name: "Review", foreign_key: :reviewee_id#, class_name: :review, foreign_key: :reviewee_id
-  # has_many :reviewers, through: :reviews_received, source: :user
   has_many :friendships_requested, class_name: "Friendship", foreign_key: :user_id
   has_many :friendees, through: :friendships_requested, source: :friendee
 
@@ -16,4 +11,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def friends
+    friendees + frienders
+  end
+
 end
