@@ -20,7 +20,12 @@ feature 'user can find friends via the index page and then submit a friend reque
 
     20.times { FactoryGirl.create(:user) }
 
-    save_and_open_page
+    visit users_path
+
+    click_link 'generic_email2@gmail.com'
+
+    click_link 'Send Friend Request'
+    expect(page).to have_content("Friend Request Successfully Submitted.")
   end
 
 end
