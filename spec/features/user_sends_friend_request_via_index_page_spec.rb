@@ -18,7 +18,7 @@ feature 'user can find friends via the index page and then submit a friend reque
     fill_in 'Password', with: user.password
     click_button 'Log in'
 
-    20.times { FactoryGirl.create(:user) }
+    2.times { FactoryGirl.create(:user) }
 
     visit users_path
 
