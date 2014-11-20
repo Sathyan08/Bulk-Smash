@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
   end
 
   def accept_request
-
+    binding.pry
   end
 
 end

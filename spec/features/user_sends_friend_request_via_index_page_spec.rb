@@ -25,6 +25,8 @@ feature 'user can find friends via the index page and then submit a friend reque
     click_link 'generic_email2@gmail.com'
 
     click_link 'Send Friend Request'
+
+    save_and_open_page
     expect(page).to have_content("Friend Request Successfully Submitted.")
   end
 
