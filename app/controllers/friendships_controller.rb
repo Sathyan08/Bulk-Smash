@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
   end
 
   def accept_request
-    @request = Friendship.find_or_initialize_by(user_id: params[:id] friendee_id: current_user.id)
+    @request = Friendship.find_or_initialize_by(user_id: params[:id], friendee_id: current_user.id)
     @request.accepted = true
 
     if @request.save

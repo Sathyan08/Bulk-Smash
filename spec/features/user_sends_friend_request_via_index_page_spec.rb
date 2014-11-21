@@ -18,15 +18,15 @@ feature 'user can find friends via the index page and then submit a friend reque
     fill_in 'Password', with: user.password
     click_button 'Log in'
 
-    2.times { FactoryGirl.create(:user) }
+    20.times { FactoryGirl.create(:user) }
 
     visit users_path
 
-    click_link 'generic_email2@gmail.com'
+    click_link 'generic_email10@gmail.com'
 
     click_link 'Send Friend Request'
 
-    save_and_open_page
+
     expect(page).to have_content("Friend Request Successfully Submitted.")
   end
 
