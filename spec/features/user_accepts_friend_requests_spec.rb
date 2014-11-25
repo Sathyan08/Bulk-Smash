@@ -28,10 +28,6 @@ feature 'user can navigate to his or her own show page and accept a friend reque
 
     click_link friendee_1.email
 
-    binding.pry
-
-    save_and_open_page
-
     click_link 'Accept'
 
     expect(page).to have_content("Friend Request Successfully Accepted.")
