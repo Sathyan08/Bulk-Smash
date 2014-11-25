@@ -10,13 +10,15 @@
   <% end %>
 </ul>
 
-<h1><%= @user.email %>'s Pending Friend Requests</h1>
-<ul>
-  <% @user.friendships_received.each do |friendship| %>
-    <% unless friendship.accepted %>
-      <li>
-        <%= friendship.user.email %>| <%= link_to 'Accept', accept_user_path(friendship.user) %>
-      <li>
+<% if @user == current_user %>
+  <h1><%= @user.email %>'s Pending Friend Requests</h1>
+  <ul>
+    <% @user.friendships_received.each do |friendship| %>
+      <% unless friendship.accepted %>
+        <li>
+          <%= friendship.user.email %>| <%= link_to 'Accept', accept_user_path(friendship.user) %>
+        <li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+<% end %>
