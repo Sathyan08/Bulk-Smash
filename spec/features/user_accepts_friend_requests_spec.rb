@@ -14,7 +14,18 @@ feature 'user can navigate to his or her own show page and accept a friend reque
 
     friendship = FactoryGirl.create(:friendship)
 
+    visit root_path
+    click_link 'Sign in'
 
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
+
+    visit users_path
+
+    click_link friendee.email
+
+    click_link 'Accept'
 
     expect(page).to have_content("Friend Request Successfully Accepted.")
   end
