@@ -1,0 +1,24 @@
+<h1><%= @user.email %></h1>
+
+<%= link_to 'Send Friend Request', request_user_path(@user) %>
+
+<ul>
+  <% @user.friends.each do |friend| %>
+    <li>
+      <%= link_to friend.email, user_path(friend) %>
+    </li>
+  <% end %>
+</ul>
+
+<% if @user == current_user %>
+  <h1><%= @user.email %>'s Pending Friend Requests</h1>
+  <ul>
+    <% @user.friendships_received.each do |friendship| %>
+      <% unless friendship.accepted %>
+        <li>
+          <%= friendship.user.email %>| <%= link_to 'Accept', accept_user_path(friendship.user) %>
+        <li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
