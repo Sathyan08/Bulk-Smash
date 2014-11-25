@@ -9,21 +9,26 @@ feature 'user can navigate to his or her own show page and accept a friend reque
 ) do
 
   scenario 'user accepts friend request' do
-    user = FactoryGirl.create(:user)
-    friendee = FactoryGirl.create(:friendee)
+    user_1 = FactoryGirl.create(:user)
+    friendee_1 = FactoryGirl.create(:friendee)
 
-    friendship = FactoryGirl.create(:friendship)
+    friendship = FactoryGirl.build(:friendship)
+    friendship.user = user_1
+    friendship.friendee = friendee_1
+    friendship.save
 
     visit root_path
     click_link 'Sign in'
 
-    fill_in 'Email', with: friendee.email
-    fill_in 'Password', with: friendee.password
+    fill_in 'Email', with: friendee_1.email
+    fill_in 'Password', with: friendee_1.password
     click_button 'Log in'
 
     visit users_path
 
-    click_link friendee.email
+    click_link friendee_1.email
+
+    binding.pry
 
     save_and_open_page
 

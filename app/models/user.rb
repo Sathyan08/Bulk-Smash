@@ -12,23 +12,37 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def friends
+  # def friends
 
+  #   friends_array = []
+
+  #   friendships_received.each do |friendship_received|
+  #     if friendship_received.accepted
+  #       friends << friendship_received.user
+  #     end
+  #   end
+
+  #   friendships_requested.each do |friendship_requested|
+  #     if friendship_requested.accepted
+  #       friends << friendship_received.friendee
+  #     end
+  #   end
+
+  #   friends_array
+  # end
+  def friendships
+    friendships_requested + friendships_received
+  end
+
+  def friends
     friends_array = []
 
-    friendships_received.each do |friendship_received|
-      if friendship_received.accepted
-        friends << friendship_received.user
-      end
-    end
-
-    friendships_requested.each do |friendships_requested|
-      if friendship_requested.accepted
-        friends << friendship_received.friendee
+    friendships.each do |friendship|
+      if friendship.accepted && friendship.user != self
+        friends_array << friendship.user
       end
     end
 
     friends_array
   end
-
 end
