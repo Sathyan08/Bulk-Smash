@@ -7,6 +7,6 @@ class Friendship < ActiveRecord::Base
   belongs_to :friendee, class_name: "User"
 
   def find_friend_of(target_user)
-    (user == target_user)? friend = friendee : friend = user
+    (user == target_user)? friendee : user
   end
 end
