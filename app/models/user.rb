@@ -26,6 +26,6 @@ class User < ActiveRecord::Base
       end
     end
 
-    friends_array
+    friends_array.uniq
   end
 end
