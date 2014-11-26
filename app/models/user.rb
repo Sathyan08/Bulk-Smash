@@ -16,12 +16,6 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    friends_array = []
-
-    accepted_friendships.each do |friendship|
-      friends_array << friendship.find_friend_of(self)
-    end
-
-    friends_array
+    accepted_friendships.inject([ ]) { |friends_array, friendship| friends_array << friendship.find_friend_of(self) }
   end
 end
