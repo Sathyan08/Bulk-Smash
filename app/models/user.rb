@@ -19,12 +19,7 @@ class User < ActiveRecord::Base
     friends_array = []
 
     accepted_friendships.each do |friendship|
-      friends_array << friendship.find_friend(self)
-      # if friendship.user == self
-      #   friends_array << friendship.friendee
-      # else
-      #   friends_array << friendship.user
-      # end
+      friends_array << friendship.find_friend_of(self)
     end
 
     friends_array
