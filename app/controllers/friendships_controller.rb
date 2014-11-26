@@ -32,4 +32,15 @@ class FriendshipsController < ApplicationController
       notice: "Friend Request Not Accepted!"
     end
   end
+
+  private
+
+
+    def friendship_params
+      params.require(:friendship).permit(
+        :user_id,
+        :friendee_id,
+        :accepted
+        )
+    end
 end
