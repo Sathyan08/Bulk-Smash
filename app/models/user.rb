@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   def friends
     accepted_friendships.inject([ ]) { |friends_array, friendship| friends_array << friendship.find_friend_of(self) }
   end
+
+  def find_friendship_by_friend_id(id)
+    friendships_received.where("user_id = ?", id) + friendships_requested.where("friendee_id = ?", id)
+  end
 end

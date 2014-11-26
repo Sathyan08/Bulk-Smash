@@ -6,7 +6,7 @@
 <ul>
   <% @user.friends.each do |friend| %>
     <li>
-      <%= link_to friend.email, user_path(friend) %>
+      <%= link_to friend.email, user_path(friend) %> | <%= link_to 'Remove', remove_friendship_user_path(friend) %>
     </li>
   <% end %>
 </ul>

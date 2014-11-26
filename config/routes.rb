@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       get 'request', to: 'friendships#send_request'
       get 'accept', to: 'friendships#accept_request'
+      get 'remove_friendship', to: 'friendships#destroy'
     end
   end
 
