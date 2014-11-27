@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       get 'accept', to: 'friendships#accept_request'
       get 'remove_friendship', to: 'friendships#destroy'
     end
+
+    resources :lists, only: [:new, :show, :edit, :destroy]
   end
 
   root 'static_pages#home'
