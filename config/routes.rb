@@ -11,5 +11,8 @@ Rails.application.routes.draw do
     resources :lists, only: [:new, :show, :edit, :destroy]
   end
 
+  resources :list_items, only: [:destroy]
+  resources :foods
+
   root 'static_pages#home'
 end
