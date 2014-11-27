@@ -7,6 +7,6 @@ describe User do
   it { should have_many(:friendees) }
   it { should have_many(:frienders) }
   it { should have_many(:lists) }
-  it { should have_many(:entries) }
+  it { should have_many(:list_items) }
 
 end
