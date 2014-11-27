@@ -10,6 +10,7 @@ feature 'user can find friends via the index page and then submit a friend reque
 
   scenario 'user signs in' do
     user = FactoryGirl.create(:user)
+    friendee = FactoryGirl.create(:friendee)
 
     visit root_path
     click_link 'Sign in'
@@ -18,16 +19,13 @@ feature 'user can find friends via the index page and then submit a friend reque
     fill_in 'Password', with: user.password
     click_button 'Log in'
 
-    20.times { FactoryGirl.create(:user) }
-
     visit users_path
 
-    click_link 'generic_email10@gmail.com'
+    click_link friendee.email
 
     click_link 'Send Friend Request'
 
 
-    expect(page).to have_content("Friend Request Successfully Submitted.")
+    expect(page).to have_content("Friend Request Successfully Sent.")
   end
-
 end
