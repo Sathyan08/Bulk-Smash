@@ -4,25 +4,24 @@ class UnitsController < ApplicationController
     @units = Unit.all
   end
 
-  # def show
-  #   @manufacturer = Manufacturer.find(params[:id])
-  #   @cars = @manufacturer.cars
-  # end
+  def show
+    @unit = Unit.find(params[:id])
+  end
 
   def new
     @unit = Unit.new
   end
 
-  # def create
-  #   @manufacturer = Manufacturer.new(manufacturer_params)
+  def create
+    @unit = Unit.new(unit_params)
 
-  #   if @manufacturer.save
-  #     redirect_to({ action: "index" }, notice: 'Successfully Created!')
-  #   else
-  #     flash[:notice] = "Could Not Save"
-  #     render :new
-  #   end
-  # end
+    if @unit.save
+      redirect_to({ action: "index" }, notice: 'Successfully Created!')
+    else
+      flash[:notice] = "Could Not Save"
+      render :new
+    end
+  end
 
   private
 
