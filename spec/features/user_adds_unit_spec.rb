@@ -14,7 +14,7 @@ feature 'user can add a new unit', %Q(
     unit = FactoryGirl.build(:pound)
 
     visit new_unit_path
-    fill_in "Name", with unit.name
+    fill_in "Name", with: unit.name
 
     click_button "Create Unit"
 
