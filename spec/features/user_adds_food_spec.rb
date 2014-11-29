@@ -15,7 +15,7 @@ feature 'user can add a new food', %Q(
 
     visit new_food_path
     fill_in "Name", with: food.name
-    select unit.name, from: "Units"
+    select unit.name, from: "Unit"
 
     click_button "Create Food"
 
