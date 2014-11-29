@@ -1,0 +1,10 @@
+<h1><%= @unit.name %></h1>
+
+<h3>Foods Measured in <%= @unit.name.pluralize(@unit.foods.count) %>s</h3>
+
+  <ul>
+    <% @unit.foods.each do |food| %>
+      <li><%= link_to food.name, food_path(food) %></li>
+    <% end %>
+  </ul>
+

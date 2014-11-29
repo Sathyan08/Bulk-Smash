@@ -16,7 +16,7 @@ class UnitsController < ApplicationController
     @unit = Unit.new(unit_params)
 
     if @unit.save
-      redirect_to({ action: "index" }, notice: 'Successfully Created!')
+      redirect_to @unit, notice: 'Successfully Created!'
     else
       flash[:notice] = "Could Not Save"
       render :new
