@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :list_items, only: [:destroy]
   resources :foods
+  resources :units
 
   root 'static_pages#home'
 end
