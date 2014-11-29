@@ -11,7 +11,7 @@ feature 'user can add a new food', %Q(
 
     user = FactoryGirl.create(:user)
     unit = FactoryGirl.create(:pound)
-    food = FactoryGirl.create(:chicken)
+    food = FactoryGirl.build(:food)
 
     visit new_food_path
     fill_in "Name", with: food.name
