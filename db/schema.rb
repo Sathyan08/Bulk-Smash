@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 20141130005343) do
   end
 
   create_table "lists", force: true do |t|
-    t.integer  "user_id",                   null: false
+    t.integer  "user_id",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "current",    default: true
-    t.string   "name",                      null: false
+    t.boolean  "current",    default: false
+    t.string   "name",                       null: false
   end
 
   create_table "units", force: true do |t|
