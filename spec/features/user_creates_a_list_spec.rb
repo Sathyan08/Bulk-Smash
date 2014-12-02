@@ -12,7 +12,7 @@ feature 'user can create new lists', %Q(
     user = FactoryGirl.create(:user)
     list = FactoryGirl.build(:list)
 
-    visit new_user_list_path(user, list)
+    visit new_user_list_path(user)
 
     fill_in "Name", with: list.name
     check "Current"
