@@ -12,10 +12,16 @@ feature 'user can create new lists', %Q(
     user = FactoryGirl.create(:user)
     list = FactoryGirl.build(:list)
 
-    visit new_user_list_path(user)
+    visit root_path
+    click_link 'Sign in'
+
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
+
+    visit new_list_path
 
     fill_in "Name", with: list.name
-    check "Current"
 
     click_button "Create List"
 
