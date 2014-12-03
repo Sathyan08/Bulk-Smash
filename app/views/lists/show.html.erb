@@ -2,10 +2,15 @@
 
   <ul>
     <% @list.list_items.each do |item| %>
-
+      <li> <%= item.amount %> | <%= item.name %> </li>
     <% end %>
   </ul>
 
   <h1>Add Items to Your List</h1>
 
-<%= render "lists/list_item_form", list: @list %>
+<%= simple_form_for([@list, @list.list_items.build]) do |f| %>
+  <%= f.association :food %>
+  <%= f.input :amount %>
+  <%= f.button :submit %>
+<% end %>
+
