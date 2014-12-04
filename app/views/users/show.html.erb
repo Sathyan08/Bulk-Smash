@@ -20,7 +20,11 @@
   </ul>
 <% end %>
 
-<h3><%= @user.email %>'s Grocery List:</h3>
+<h3><%= @user.email %>'s Grocery Lists:</h3>
+
+  <% @user.lists.each do |list| %>
+    <li><%= link_to list.name, list_path(list) %></li>
+  <% end %>
 
 
 
