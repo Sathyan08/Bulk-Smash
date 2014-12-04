@@ -9,5 +9,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :lists do
+    resources :list_items
+  end
+
+  resources :foods
+  resources :units
+
   root 'static_pages#home'
 end

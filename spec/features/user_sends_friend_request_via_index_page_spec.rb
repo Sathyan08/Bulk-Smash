@@ -25,7 +25,6 @@ feature 'user can find friends via the index page and then submit a friend reque
 
     click_link 'Send Friend Request'
 
-
     expect(page).to have_content("Friend Request Successfully Sent.")
   end
 end
