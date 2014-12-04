@@ -7,12 +7,15 @@ Rails.application.routes.draw do
       get 'accept', to: 'friendships#accept_request'
       get 'remove_friendship', to: 'friendships#destroy'
     end
-    resources :lists, only: [:show, :edit, :update, :destroy] do
-      resources :list_items, only: [:new, :create, :edit, :update, :destroy]
-    end
+    # resources :lists, only: [:show, :edit, :update, :destroy] do
+    #   resources :list_items, only: [:new, :create, :edit, :update, :destroy]
+    # end
   end
 
-  resources :lists, only: [:new, :create]
+  resources :lists do
+    resources :list_items, only: [:new, :create, :edit, :update, :destroy]
+  end
+
   resources :foods
   resources :units
 
