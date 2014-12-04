@@ -9,22 +9,18 @@ feature 'user can add a new items to list', %Q(
 
   scenario 'user adds a new item to his or her list' do
 
-    user = FactoryGirl.create(:user)
-    list = FactoryGirl.build(:list)
-    list.user = user
-    list.save
-
+    list = FactoryGirl.create(:list)
     unit = FactoryGirl.create(:pound)
     food = FactoryGirl.create(:food)
 
     visit root_path
     click_link 'Sign in'
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in 'Email', with: list.user.email
+    fill_in 'Password', with: list.user.password
     click_button 'Log in'
 
-    visit user_path(user)
+    visit user_path(list.user)
 
     click_link list.name
 
