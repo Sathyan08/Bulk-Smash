@@ -10,7 +10,7 @@ class ListItemsController < ApplicationController
     @list_item.list = list
 
     if @list_item.save
-      redirect_to list_path(list), notice: "Successfully Created"
+      redirect_to list_path(list), notice: "Successfully Created!"
     else
       redirect_to list_path(list), notice: "Could Not Save"
     end

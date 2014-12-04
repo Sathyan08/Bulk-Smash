@@ -27,9 +27,7 @@ feature 'user can add a new items to list', %Q(
     select food.name, from: "Food"
     fill_in "Amount", with: 10
 
-    save_and_open_page
-
-    click_button "Create List Item"
+    click_button "Create List item"
 
     expect(page).to have_content("Successfully Created!")
   end
