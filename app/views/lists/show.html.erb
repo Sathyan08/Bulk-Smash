@@ -2,7 +2,7 @@
 
   <ul>
     <% @list.list_items.each do |item| %>
-      <li> <%= item.amount %> | <%= item.name %> </li>
+      <li> <%= item.amount %> <%= item.food.unit.name.pluralize(item.amount) %> | <%= item.food.name %> </li>
     <% end %>
   </ul>
 
