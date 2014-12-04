@@ -7,5 +7,6 @@ class ListItem < ActiveRecord::Base
 
   validates :list_id, presence: true
   validates :food_id, presence: true
+  validates :amount, numericality: true, presence: true
 
 end
