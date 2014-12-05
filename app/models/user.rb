@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
   def find_friendship_by_friend_id(id)
     friendships_received.where("user_id = ?", id) + friendships_requested.where("friendee_id = ?", id)
   end
+
+  def items
+    lists.current.inject([ ]) { |items_array, list| items_array + list.list_items }
+  end
 end
