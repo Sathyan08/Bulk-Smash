@@ -29,4 +29,17 @@ class User < ActiveRecord::Base
   def items
     lists.current.inject([ ]) { |items_array, list| items_array + list.list_items }
   end
+
+  def item_names
+    names = items.inject([ ]) { |names_array, item| names_array << item.food.name }
+    names.uniq
+  end
+
+  def friend_items
+    friends.inject([]) { |items_array, friend| items_array + friend.items  }
+  end
+
+  def total_items
+    items + friend_items
+  end
 end
