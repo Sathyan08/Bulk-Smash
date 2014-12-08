@@ -20,6 +20,13 @@
   </ul>
 <% end %>
 
+<h3>Matches:</h3>
+  <% @user.total_items_by_name.each do |matched_array| %>
+    <% matched_array.each do |item| %>
+      <li><%= item.food.name %> | <%= item.list.user.email %></li>
+    <% end %>
+  <% end %>
+
 <h3>Current Items:</h3>
   <% @user.items.each do |item| %>
     <li><%= item.amount %> <%= item.food.unit.name.pluralize(item.amount) %> | <%= item.food.name %> </li>
