@@ -20,6 +20,16 @@
   </ul>
 <% end %>
 
+<h3>Current Items:</h3>
+  <% @user.items.each do |item| %>
+    <li><%= item.amount %> <%= item.food.unit.name.pluralize(item.amount) %> | <%= item.food.name %> </li>
+  <% end %>
+
+<h3><%= @user.email %>'s Current Grocery Lists:</h3>
+  <% @user.lists.current.each do |list| %>
+    <li><%= link_to list.name, list_path(list) %></li>
+  <% end %>
+
 <h3><%= @user.email %>'s Grocery Lists:</h3>
 
   <% @user.lists.each do |list| %>

@@ -25,4 +25,29 @@ class User < ActiveRecord::Base
   def find_friendship_by_friend_id(id)
     friendships_received.where("user_id = ?", id) + friendships_requested.where("friendee_id = ?", id)
   end
+
+  def items
+    lists.current.inject([ ]) { |items_array, list| items_array + list.list_items }
+  end
+
+  def item_names
+    names = items.inject([ ]) { |names_array, item| names_array << item.food.name }
+    names.uniq
+  end
+
+  def friend_items
+    friends.inject([ ]) { |items_array, friend| items_array + friend.items  }
+  end
+
+  def total_items
+    items + friend_items
+  end
+
+  def find_all_items_with(name)
+    total_items.find_all { |item| item.food.name == name }
+  end
+
+  def total_items_by_name
+    item_names.inject([ ]) { |matches, name| matches << find_all_items_with(name) }
+  end
 end

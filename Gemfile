@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'faker'
+
 gem 'simple_form'
 
 gem 'devise'
