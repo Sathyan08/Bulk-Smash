@@ -26,7 +26,16 @@ chicken.amount = 5
 chicken.list = list
 chicken.save
 
+coke = ListItem.new(food: Food.find_by(name: 'Coke'))
+coke.amount = 32
+coke.list = list
+coke.save
+
+counter = 0
+
 5.times do
+  counter += 1
+
   user = FactoryGirl.create(:user)
   friendship = FactoryGirl.build(:friendship)
   friendship.friendee = first_user
@@ -42,6 +51,13 @@ chicken.save
   chicken.amount = 5
   chicken.list = list
   chicken.save
+
+  if counter % 2 != 0
+    coke = ListItem.new(food: Food.find_by(name: 'Coke'))
+    coke.amount = 32
+    coke.list = list
+    coke.save
+  end
 end
 
 def populate_units
