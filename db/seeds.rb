@@ -17,6 +17,15 @@ foods = [ {name: 'Chicken', unit: Unit.find_by(name: "Pound")},
 
 foods.each { |food| Food.create(food) }
 
+list = FactoryGirl.build(:list)
+list.user = first_user
+list.save
+
+chicken = ListItem.new(food: Food.find_by(name: 'Chicken'))
+chicken.amount = 5
+chicken.list = list
+chicken.save
+
 5.times do
   user = FactoryGirl.create(:user)
   friendship = FactoryGirl.build(:friendship)
