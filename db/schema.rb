@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204230402) do
+ActiveRecord::Schema.define(version: 20141226191653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bulks", force: true do |t|
+    t.integer  "food_id"
+    t.float    "amount"
+    t.float    "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "foods", force: true do |t|
     t.string   "name",       null: false
@@ -28,6 +36,9 @@ ActiveRecord::Schema.define(version: 20141204230402) do
     t.integer "friendee_id", null: false
     t.boolean "accepted"
   end
+
+  add_index "friendships", ["friendee_id"], name: "index_friendships_on_friendee_id", using: :btree
+  add_index "friendships", ["user_id", "friendee_id"], name: "index_friendships_on_user_id_and_friendee_id", unique: true, using: :btree
 
   create_table "list_items", force: true do |t|
     t.integer  "list_id",    null: false
