@@ -1,6 +1,6 @@
 class BulksController < ApplicationController
 
-def index
+  def index
     @bulks = Bulk.all
   end
 
@@ -16,7 +16,7 @@ def index
     @bulk = Bulk.new(bulk_params)
 
     if @bulk.save
-      redirect_to @food, notice: 'Successfully Created!'
+      redirect_to @bulk, notice: 'Successfully Created!'
     else
       flash[:notice] = "Could Not Save"
       render :new
