@@ -18,6 +18,8 @@ feature 'user can add a new bulk quantity and its price', %Q(
     fill_in "Amount", with: bulk.amount
     fill_in "Price", with: bulk.price
 
+    save_and_open_page
+
     click_button "Create Bulk"
 
     expect(page).to have_content("Successfully Created!")

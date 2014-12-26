@@ -26,7 +26,7 @@ class BulksController < ApplicationController
   private
 
   def bulk_params
-    params.require(:bulk).permit(:bulk_id, :amount, :price)
+    params.require(:bulk).permit(:food_id, :amount, :price)
   end
 
 end
