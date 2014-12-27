@@ -66,7 +66,14 @@ class User < ActiveRecord::Base
     item_hash
   end
 
-  def total_items_matched_with_bulk
+  def total_items_with_bulk
+    total_items_summed.each do |item_name, item_attributes|
+      food = Food.find_by( item_name )
+      bulk = Bulk.find_by(food: food)
+      total_items_summed[item_name][:bulk_amount] = bulk.amount
+      total_items_summed[item_name][:bulk_price]  = bulk.price
+    end
 
+    total_items_summed
   end
 end
