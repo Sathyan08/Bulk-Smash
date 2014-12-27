@@ -50,4 +50,23 @@ class User < ActiveRecord::Base
   def total_items_by_name
     item_names.inject([ ]) { |matches, name| matches << find_all_items_with(name) }
   end
+
+  def total_items_summed
+    item_hash = { }
+    total_items.each do |item|
+      if item_hash.has_key?(item.name)
+        item_hash[item.name][:item_list] << item
+        item_hash[item.name][:total_amount] += item.amount
+      else
+        item_hash[item.name][:item_list] = [item]
+        item_hash[item.name][:total_amount] = [item.amount]
+      end
+    end
+
+    item_hash
+  end
+
+  def total_items_matched_with_bulk
+
+  end
 end
