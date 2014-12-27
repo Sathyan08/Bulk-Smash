@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :foods
   resources :units
+  resources :bulks
 
   root 'static_pages#home'
 end
