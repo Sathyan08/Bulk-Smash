@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
         item_hash[item.name][:total_amount] += item.amount
       else
         item_hash[item.name][:item_list] = [item]
-        item_hash[item.name][:total_amount] = [item.amount]
+        item_hash[item.name][:total_amount] = item_amount
       end
     end
 
