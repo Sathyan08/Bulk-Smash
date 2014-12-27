@@ -79,12 +79,16 @@ class User < ActiveRecord::Base
     total_items_summed
   end
 
-  def recommendation
+  def recommendations
     total_items_with_bulk.each do |item_name, item_attributes|
       item_name[:item_list].each do |item|
-        item.contribution = item.amount / (item_name[:bulk_price]
+        item.portion = (item.amount / item_name[:total_amount])
+        item.share = item.portion * total_items_with_bulk[item_name][:bulk_total_amount]
+        item.contribution = item.portion * total_items_with_bulk[item_name][:bulk_total_price]
       end
     end
+
+    total_items_with_bulk
   end
 
 end
