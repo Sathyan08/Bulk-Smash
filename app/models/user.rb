@@ -54,12 +54,13 @@ class User < ActiveRecord::Base
   def total_items_summed
     item_hash = { }
     total_items.each do |item|
-      if item_hash.has_key?(item.name)
-        item_hash[item.name][:item_list] << item
-        item_hash[item.name][:total_amount] += item.amount
+      if item_hash.has_key?(item.food.name)
+        item_hash[item.food.name][:item_list] << item
+        item_hash[item.food.name][:total_amount] += item.amount
       else
-        item_hash[item.name][:item_list] = [item]
-        item_hash[item.name][:total_amount] = item_amount
+        item_hash[item.food.name] = { }
+        item_hash[item.food.name][:item_list] = [item]
+        item_hash[item.food.name][:total_amount] = item.amount
       end
     end
 
