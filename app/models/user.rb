@@ -68,16 +68,18 @@ class User < ActiveRecord::Base
   end
 
   def total_items_with_bulk
-    total_items_summed.each do |item_name, item_attributes|
-      food = Food.find_by( item_name )
+    item_hash = total_items_summed
+
+    item_hash.each do |item_name, item_attributes|
+      food = Food.find_by( name: item_name )
       bulk = Bulk.find_by(food: food)
-      total_items_summed[item_name][:bulk_amount] = bulk.amount
-      total_items_summed[item_name][:bulk_price]  = bulk.price
-      total_items_summed[item_name][:bulk_total_amount] = ((item_hash[item.name][:total_amount]/bulk.amount) + 1).to_i
-      total_items_summed[item_name][:bulk_total_price] = bulk.price * total_items_summed[item_name][:bulk_total_amount]
+      item_hash[item_name][:bulk_amount] = bulk.amount
+      item_hash[item_name][:bulk_price]  = bulk.price
+      item_hash[item_name][:bulk_total_amount] = ((item_hash[item_name][:total_amount]/bulk.amount) + 1).to_i
+      item_hash[item_name][:bulk_total_price] = bulk.price * item_hash[item_name][:bulk_total_amount]
     end
 
-    total_items_summed
+    item_hash
   end
 
   def recommendations
