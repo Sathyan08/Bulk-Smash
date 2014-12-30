@@ -82,16 +82,43 @@ class User < ActiveRecord::Base
     item_hash
   end
 
+  def items_aggregated_json
+    item_hash = total_items_with_bulk
+
+    binding.pry
+
+    item_hash.each do |item_name, item_attributes|
+      item_attributes[:item_list].map { |item| item.as_json }
+    end
+
+    item_hash
+  end
+
   def recommendations
-    total_items_with_bulk.each do |item_name, item_attributes|
-      item_name[:item_list].each do |item|
-        item.portion = (item.amount / item_name[:total_amount])
-        item.share = item.portion * total_items_with_bulk[item_name][:bulk_total_amount]
-        item.contribution = item.portion * total_items_with_bulk[item_name][:bulk_total_price]
+    item_hash = total_items_with_bulk
+
+    # item_hash.each do |item_name, item_attributes|
+    #   item_attributes[:item_list].each do |item|
+    #     item.portion = (item.amount / item_name[:total_amount])
+    #     item.share = item.portion * item_hash[item_name][:bulk_total_amount]
+    #     item.contribution = item.portion * item_hash[item_name][:bulk_total_price]
+    #   end
+    # end
+
+    item_hash.each do |item_name, item_attributes|
+      item_attributes[:item_list].each do |item|
+        portion = (item.amount / item_attributes[:total_amount]).to_f
+        item.instance_variable_set(:@portion, portion)
+
+        share = portion * item_attributes[:bulk_total_amount]
+        item.instance_variable_set(:@share, share)
+
+        contribution = portion * item_attributes[:bulk_total_price]
+        item.instance_variable_set(:@contribution, contribution)
       end
     end
 
-    total_items_with_bulk
+    item_hash
   end
 
 end
