@@ -107,14 +107,11 @@ class User < ActiveRecord::Base
 
     item_hash.each do |item_name, item_attributes|
       item_attributes[:item_list].each do |item|
-        portion = (item.amount / item_attributes[:total_amount]).to_f
-        item.instance_variable_set(:@portion, portion)
+        item.portion = (item.amount / item_attributes[:total_amount]).to_f
 
-        share = portion * item_attributes[:bulk_total_amount]
-        item.instance_variable_set(:@share, share)
+        item.share = portion * item_attributes[:bulk_total_amount]
 
-        contribution = portion * item_attributes[:bulk_total_price]
-        item.instance_variable_set(:@contribution, contribution)
+        item.contribution = portion * item_attributes[:bulk_total_price]
       end
     end
 
