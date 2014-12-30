@@ -107,11 +107,12 @@ class User < ActiveRecord::Base
 
     item_hash.each do |item_name, item_attributes|
       item_attributes[:item_list].each do |item|
+        binding.pry
         item.portion = (item.amount / item_attributes[:total_amount]).to_f
 
-        item.share = portion * item_attributes[:bulk_total_amount]
+        item.share = item.portion * item_attributes[:bulk_total_amount]
 
-        item.contribution = portion * item_attributes[:bulk_total_price]
+        item.contribution = item.portion * item_attributes[:bulk_total_price]
       end
     end
 
