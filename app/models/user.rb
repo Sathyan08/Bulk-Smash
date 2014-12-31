@@ -97,14 +97,6 @@ class User < ActiveRecord::Base
   def recommendations
     item_hash = total_items_with_bulk
 
-    # item_hash.each do |item_name, item_attributes|
-    #   item_attributes[:item_list].each do |item|
-    #     item.portion = (item.amount / item_name[:total_amount])
-    #     item.share = item.portion * item_hash[item_name][:bulk_total_amount]
-    #     item.contribution = item.portion * item_hash[item_name][:bulk_total_price]
-    #   end
-    # end
-
     item_hash.each do |item_name, item_attributes|
       item_attributes[:item_list].each do |item|
         item.portion = (item.amount.to_f / item_attributes[:total_amount]).to_f
