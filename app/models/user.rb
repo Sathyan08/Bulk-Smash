@@ -101,7 +101,7 @@ class User < ActiveRecord::Base
       item_attributes[:item_list].each do |item|
         item.portion = (item.amount.to_f / item_attributes[:total_amount]).to_f
 
-        item.share = item.portion * item_attributes[:bulk_total_amount]
+        item.share = item.portion * item_attributes[:bulk_total_amount] * item_attributes[:bulk_amount]
 
         item.contribution = item.portion * item_attributes[:bulk_total_price]
       end
