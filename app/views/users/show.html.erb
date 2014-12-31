@@ -20,6 +20,14 @@
   </ul>
 <% end %>
 
+
+<h3>Recommendations: </h3>
+  <% @user.recommendations.each do |item_name, item_attributes| %>
+    <li> <%= item_name %> | Bulk Units: <%= item_attributes[:bulk_total_amount] %> | Total Cost: <%= "#{ sprintf('%.2f'%item_attributes[:bulk_total_price]) }" %>
+    </li>
+  <% end %>
+
+
 <h3>Matches:</h3>
   <% @user.total_items_by_name.each do |matched_array| %>
     <% matched_array.each do |item| %>

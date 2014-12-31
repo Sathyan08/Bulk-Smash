@@ -50,4 +50,64 @@ class User < ActiveRecord::Base
   def total_items_by_name
     item_names.inject([ ]) { |matches, name| matches << find_all_items_with(name) }
   end
+
+  def total_items_summed
+    item_hash = { }
+    total_items.each do |item|
+      if item_hash.has_key?(item.food.name)
+        item_hash[item.food.name][:item_list] << item
+        item_hash[item.food.name][:total_amount] += item.amount
+      else
+        item_hash[item.food.name] = { }
+        item_hash[item.food.name][:item_list] = [item]
+        item_hash[item.food.name][:total_amount] = item.amount
+      end
+    end
+
+    item_hash
+  end
+
+  def total_items_with_bulk
+    item_hash = total_items_summed
+
+    item_hash.each do |item_name, item_attributes|
+      food = Food.find_by( name: item_name )
+      bulk = Bulk.find_by(food: food)
+      item_hash[item_name][:bulk_amount] = bulk.amount
+      item_hash[item_name][:bulk_price]  = bulk.price
+      item_hash[item_name][:bulk_total_amount] = ((item_hash[item_name][:total_amount]/bulk.amount) + 1).to_i
+      item_hash[item_name][:bulk_total_price] = bulk.price * item_hash[item_name][:bulk_total_amount]
+    end
+
+    item_hash
+  end
+
+  def items_aggregated_json
+    item_hash = total_items_with_bulk
+
+    binding.pry
+
+    item_hash.each do |item_name, item_attributes|
+      item_attributes[:item_list].map { |item| item.as_json }
+    end
+
+    item_hash
+  end
+
+  def recommendations
+    item_hash = total_items_with_bulk
+
+    item_hash.each do |item_name, item_attributes|
+      item_attributes[:item_list].each do |item|
+        item.portion = (item.amount.to_f / item_attributes[:total_amount]).to_f
+
+        item.share = item.portion * item_attributes[:bulk_total_amount]
+
+        item.contribution = item.portion * item_attributes[:bulk_total_price]
+      end
+    end
+
+    item_hash
+  end
+
 end

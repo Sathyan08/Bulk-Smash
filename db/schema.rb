@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226191653) do
+ActiveRecord::Schema.define(version: 20141230220731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,11 +41,14 @@ ActiveRecord::Schema.define(version: 20141226191653) do
   add_index "friendships", ["user_id", "friendee_id"], name: "index_friendships_on_user_id_and_friendee_id", unique: true, using: :btree
 
   create_table "list_items", force: true do |t|
-    t.integer  "list_id",    null: false
-    t.integer  "food_id",    null: false
+    t.integer  "list_id",      null: false
+    t.integer  "food_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "amount",     null: false
+    t.integer  "amount",       null: false
+    t.float    "share"
+    t.float    "portion"
+    t.float    "contribution"
   end
 
   create_table "lists", force: true do |t|
