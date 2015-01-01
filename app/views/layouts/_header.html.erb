@@ -19,14 +19,20 @@
     <section class="top-bar-section">
       <!-- Right Nav Section -->
       <ul class="right">
-        <li class="active"><a href="#">Right Button Active</a></li>
-        <li class="has-dropdown">
-          <a href="#">Right Button Dropdown</a>
-          <ul class="dropdown">
-            <li><a href="#">First link in dropdown</a></li>
-            <li class="active"><a href="#">Active link in dropdown</a></li>
-          </ul>
-        </li>
+
+        <% if current_user %>
+          <li> <%= link_to "View Your Recommendations!", user_path(current_user) %> </li>
+          <li class="has-dropdown">
+            <a href="#">Navigation</a>
+            <ul class="dropdown">
+              <li> <%= link_to "See All Users", users_path %> </li>
+              <li> <%= link_to "Create a New List", new_list_path  %> </li>
+              <li> <%= link_to "Add a New Food Type", new_food_path %> </li>
+              <li> <%= link_to "Add a New Unit Type", new_unit_path %> </li>
+            </ul>
+          </li>
+
+        <% end %>
       </ul>
 
       <!-- Left Nav Section -->
