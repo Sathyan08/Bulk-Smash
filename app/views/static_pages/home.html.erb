@@ -1,29 +1,51 @@
-<h1>Home</h1>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut feugiat orci, convallis imperdiet augue. In finibus lorem nec ligula euismod, id feugiat nulla tempor. Praesent nisi libero, hendrerit commodo pulvinar non, bibendum sed arcu. Nunc nibh ex, vulputate in nisi quis, accumsan mollis eros. Donec semper gravida quam id accumsan. Suspendisse potenti. Nunc sed ante quis dolor tempor gravida. Donec placerat sit amet nibh sed finibus. Nulla in ligula nec justo sollicitudin cursus. Ut nunc erat, eleifend sed neque ut, sagittis gravida lorem. Pellentesque sodales posuere lectus, et fringilla est. Donec tincidunt tellus at porttitor fringilla.</p>
+<ul class="small-block-grid-2 large-block-grid-3 columns">
 
-<p>LNullam odio ipsum, maximus sed auctor id, gravida eget dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis pharetra vulputate sagittis. Proin euismod non odio quis tincidunt. Integer mollis mi eu ligula pulvinar cursus. Pellentesque placerat scelerisque gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at libero fermentum, congue ex eu, efficitur est. Phasellus in volutpat tellus. Donec erat lacus, facilisis et egestas vitae, iaculis sed turpis. Curabitur sagittis diam vitae erat tristique ultricies.</p>
+  <li class="card">
+    <div class="content">
+      <h5>Users</h5>
 
-<p>LCras egestas finibus metus non pulvinar. Nulla a pretium enim, non malesuada tortor. Sed vestibulum elit sed elit scelerisque, vitae elementum lorem rhoncus. Aliquam nunc enim, bibendum id convallis et, commodo ut diam. Phasellus ut hendrerit turpis. In ullamcorper interdum lacus eget consequat. Proin iaculis tortor vel ultricies pretium. Aliquam suscipit nisi a dui eleifend fermentum. Aliquam venenatis diam ut sapien pulvinar, efficitur scelerisque orci aliquet. Suspendisse sed leo non odio bibendum tincidunt. Nullam pellentesque lacus vel lacus bibendum porttitor. Suspendisse porta tincidunt bibendum. Mauris pulvinar est nec libero volutpat, sit amet vehicula felis condimentum. Praesent arcu nisl, hendrerit id rhoncus eget, tincidunt ut elit. Maecenas odio augue, vehicula ut magna a, congue pharetra sem. Pellentesque bibendum leo in urna vehicula, quis elementum sapien fringilla.</p>
+      <% if current_user %>
 
-<p>LPraesent pretium diam a arcu porttitor, a porta ante consequat. Morbi tristique nulla sem, eget mattis urna laoreet nec. Praesent rhoncus dignissim risus vel sagittis. Vivamus euismod, metus sit amet mattis venenatis, ipsum ligula hendrerit felis, varius fringilla nisi neque vitae turpis. Donec varius tincidunt aliquet. Integer felis enim, efficitur venenatis lectus at, luctus auctor mauris. Duis pretium sodales eleifend.</p>
+        <ul>
+          <li> <%= link_to "Your Profile", current_user %> </li>
+          <li> <%= link_to "See All Users", users_path %> </li>
+        </ul>
+      <% else %>
+        <h5>Sign in To View Your Profile or Find Other Users</h5>
+      <% end %>
+    </div>
+  </li>
 
-<p>LSed eget lacus porttitor, blandit felis pharetra, auctor nisl. Nunc tortor lacus, commodo vel risus at, tincidunt auctor tortor. Fusce porta, ante ut scelerisque tincidunt, sem magna pretium tortor, rutrum vestibulum mauris dui eu neque. Donec finibus eros non nunc porta, eu maximus eros pharetra. Ut ornare ex vitae mi ullamcorper hendrerit. Proin vitae quam sit amet lacus ultricies pretium. Sed risus purus, luctus id dignissim malesuada, cursus sed velit. Phasellus dapibus, massa eget vehicula pulvinar, dui neque aliquet sem, sit amet dignissim arcu magna et erat. Phasellus eu quam ut nulla iaculis suscipit non id urna. Fusce tincidunt viverra massa, quis euismod leo convallis sit amet. Quisque a vulputate sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <li class="card">
+    <div class="content">
+      <h5>Foods</h5>
 
-<p>LLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut feugiat orci, convallis imperdiet augue. In finibus lorem nec ligula euismod, id feugiat nulla tempor. Praesent nisi libero, hendrerit commodo pulvinar non, bibendum sed arcu. Nunc nibh ex, vulputate in nisi quis, accumsan mollis eros. Donec semper gravida quam id accumsan. Suspendisse potenti. Nunc sed ante quis dolor tempor gravida. Donec placerat sit amet nibh sed finibus. Nulla in ligula nec justo sollicitudin cursus. Ut nunc erat, eleifend sed neque ut, sagittis gravida lorem. Pellentesque sodales posuere lectus, et fringilla est. Donec tincidunt tellus at porttitor fringilla.</p>
+      <% if current_user %>
+        <ul>
+          <li> <%= link_to "Add a New Food", new_food_path %> </li>
+          <li> <%= link_to "See All Foods in the Database", foods_path %> </li>
+        </ul>
+      <% else %>
+        <h5>Sign in To See a List of Food or Add New Foods</h5>
+      <% end %>
+    </div>
+  </li>
 
-<p>LNullam odio ipsum, maximus sed auctor id, gravida eget dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis pharetra vulputate sagittis. Proin euismod non odio quis tincidunt. Integer mollis mi eu ligula pulvinar cursus. Pellentesque placerat scelerisque gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at libero fermentum, congue ex eu, efficitur est. Phasellus in volutpat tellus. Donec erat lacus, facilisis et egestas vitae, iaculis sed turpis. Curabitur sagittis diam vitae erat tristique ultricies.</p>
 
-<p>LCras egestas finibus metus non pulvinar. Nulla a pretium enim, non malesuada tortor. Sed vestibulum elit sed elit scelerisque, vitae elementum lorem rhoncus. Aliquam nunc enim, bibendum id convallis et, commodo ut diam. Phasellus ut hendrerit turpis. In ullamcorper interdum lacus eget consequat. Proin iaculis tortor vel ultricies pretium. Aliquam suscipit nisi a dui eleifend fermentum. Aliquam venenatis diam ut sapien pulvinar, efficitur scelerisque orci aliquet. Suspendisse sed leo non odio bibendum tincidunt. Nullam pellentesque lacus vel lacus bibendum porttitor. Suspendisse porta tincidunt bibendum. Mauris pulvinar est nec libero volutpat, sit amet vehicula felis condimentum. Praesent arcu nisl, hendrerit id rhoncus eget, tincidunt ut elit. Maecenas odio augue, vehicula ut magna a, congue pharetra sem. Pellentesque bibendum leo in urna vehicula, quis elementum sapien fringilla.</p>
+  <li class="card">
+    <div class="content">
+      <h5>Lists</h5>
 
-<p>LPraesent pretium diam a arcu porttitor, a porta ante consequat. Morbi tristique nulla sem, eget mattis urna laoreet nec. Praesent rhoncus dignissim risus vel sagittis. Vivamus euismod, metus sit amet mattis venenatis, ipsum ligula hendrerit felis, varius fringilla nisi neque vitae turpis. Donec varius tincidunt aliquet. Integer felis enim, efficitur venenatis lectus at, luctus auctor mauris. Duis pretium sodales eleifend.</p>
+      <% if current_user %>
+        <%= link_to "Make a New List", new_list_path %>
+      <% else %>
+        <h5>Sign in To Add a New Grocery List</h5>
+      <% end %>
+    </div>
+  </li>
 
-<p>LSed eget lacus porttitor, blandit felis pharetra, auctor nisl. Nunc tortor lacus, commodo vel risus at, tincidunt auctor tortor. Fusce porta, ante ut scelerisque tincidunt, sem magna pretium tortor, rutrum vestibulum mauris dui eu neque. Donec finibus eros non nunc porta, eu maximus eros pharetra. Ut ornare ex vitae mi ullamcorper hendrerit. Proin vitae quam sit amet lacus ultricies pretium. Sed risus purus, luctus id dignissim malesuada, cursus sed velit. Phasellus dapibus, massa eget vehicula pulvinar, dui neque aliquet sem, sit amet dignissim arcu magna et erat. Phasellus eu quam ut nulla iaculis suscipit non id urna. Fusce tincidunt viverra massa, quis euismod leo convallis sit amet. Quisque a vulputate sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut feugiat orci, convallis imperdiet augue. In finibus lorem nec ligula euismod, id feugiat nulla tempor. Praesent nisi libero, hendrerit commodo pulvinar non, bibendum sed arcu. Nunc nibh ex, vulputate in nisi quis, accumsan mollis eros. Donec semper gravida quam id accumsan. Suspendisse potenti. Nunc sed ante quis dolor tempor gravida. Donec placerat sit amet nibh sed finibus. Nulla in ligula nec justo sollicitudin cursus. Ut nunc erat, eleifend sed neque ut, sagittis gravida lorem. Pellentesque sodales posuere lectus, et fringilla est. Donec tincidunt tellus at porttitor fringilla.</p>
 
-<p>LNullam odio ipsum, maximus sed auctor id, gravida eget dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis pharetra vulputate sagittis. Proin euismod non odio quis tincidunt. Integer mollis mi eu ligula pulvinar cursus. Pellentesque placerat scelerisque gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at libero fermentum, congue ex eu, efficitur est. Phasellus in volutpat tellus. Donec erat lacus, facilisis et egestas vitae, iaculis sed turpis. Curabitur sagittis diam vitae erat tristique ultricies.</p>
+</ul>
 
-<p>LCras egestas finibus metus non pulvinar. Nulla a pretium enim, non malesuada tortor. Sed vestibulum elit sed elit scelerisque, vitae elementum lorem rhoncus. Aliquam nunc enim, bibendum id convallis et, commodo ut diam. Phasellus ut hendrerit turpis. In ullamcorper interdum lacus eget consequat. Proin iaculis tortor vel ultricies pretium. Aliquam suscipit nisi a dui eleifend fermentum. Aliquam venenatis diam ut sapien pulvinar, efficitur scelerisque orci aliquet. Suspendisse sed leo non odio bibendum tincidunt. Nullam pellentesque lacus vel lacus bibendum porttitor. Suspendisse porta tincidunt bibendum. Mauris pulvinar est nec libero volutpat, sit amet vehicula felis condimentum. Praesent arcu nisl, hendrerit id rhoncus eget, tincidunt ut elit. Maecenas odio augue, vehicula ut magna a, congue pharetra sem. Pellentesque bibendum leo in urna vehicula, quis elementum sapien fringilla.</p>
 
-<p>LPraesent pretium diam a arcu porttitor, a porta ante consequat. Morbi tristique nulla sem, eget mattis urna laoreet nec. Praesent rhoncus dignissim risus vel sagittis. Vivamus euismod, metus sit amet mattis venenatis, ipsum ligula hendrerit felis, varius fringilla nisi neque vitae turpis. Donec varius tincidunt aliquet. Integer felis enim, efficitur venenatis lectus at, luctus auctor mauris. Duis pretium sodales eleifend.</p>
-
-<p>LSed eget lacus porttitor, blandit felis pharetra, auctor nisl. Nunc tortor lacus, commodo vel risus at, tincidunt auctor tortor. Fusce porta, ante ut scelerisque tincidunt, sem magna pretium tortor, rutrum vestibulum mauris dui eu neque. Donec finibus eros non nunc porta, eu maximus eros pharetra. Ut ornare ex vitae mi ullamcorper hendrerit. Proin vitae quam sit amet lacus ultricies pretium. Sed risus purus, luctus id dignissim malesuada, cursus sed velit. Phasellus dapibus, massa eget vehicula pulvinar, dui neque aliquet sem, sit amet dignissim arcu magna et erat. Phasellus eu quam ut nulla iaculis suscipit non id urna. Fusce tincidunt viverra massa, quis euismod leo convallis sit amet. Quisque a vulputate sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
