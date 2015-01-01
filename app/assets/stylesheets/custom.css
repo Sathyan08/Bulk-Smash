@@ -1,5 +1,12 @@
-#main-container {
-  margin-top: 5%;
+.main {
+  background: #F0F0F5;
+  height: 100%;
+}
+
+.content {
+  background: white;
+  padding: 5%;
+  height: 400px;
 }
 
 footer{
