@@ -23,6 +23,8 @@
     <div class="content">
       <h5>Foods</h5>
 
+      <%= image_tag "bread.jpg" %>
+
       <% if current_user %>
         <ul>
           <li> <%= link_to "Add a New Food", new_food_path %> </li>
@@ -39,8 +41,12 @@
     <div class="content">
       <h5>Lists</h5>
 
+      <%= image_tag "cake_making.jpg" %>
+
       <% if current_user %>
-        <%= link_to "Make a New List", new_list_path %>
+        <ul>
+          <li> <%= link_to "Make a New List", new_list_path %> </li>
+        </ul>
       <% else %>
         <h5>Sign in To Add a New Grocery List</h5>
       <% end %>
