@@ -25,12 +25,14 @@
 <ul>
   <% @user.recommendations.each do |item_name, item_attributes| %>
     <li> <%= item_name %> | Bulk Units: <%= item_attributes[:bulk_total_amount] %> | Total Cost: <%= "$#{ sprintf('%.2f'%item_attributes[:bulk_total_price]) }" %>
+
       <ul>
       <% item_attributes[:item_list].each do |item| %>
         <li>  <%= item.list.user.email %> | Share: <%= "#{ sprintf('%.2f'%item.share).to_i }" %> <%= item.food.unit.name.pluralize(item.share) %> | Contribution: <%= " $#{ sprintf('%.2f'%item.contribution)}" %>
         </li>
       <% end %>
       </ul>
+
     </li>
   </ul>
   <% end %>
