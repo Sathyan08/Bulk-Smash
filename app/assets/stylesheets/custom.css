@@ -18,6 +18,22 @@
 
 }
 
+.top-content {
+  background: white;
+  padding: 1%;
+  height: auto;
+  margin: 1%;
+  overflow: scroll;
+
+}
+
+.top-card {
+  background: white;
+  padding: 3%;
+  height: 400px;
+  width: auto;
+}
+
 .home {
   height: 800px;
 }
