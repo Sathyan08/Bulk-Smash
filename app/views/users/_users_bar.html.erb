@@ -1,29 +1,32 @@
-<div class="row">
+<div class="bar">
+  <div class="row">
 
-    <ul class="small-block-grid-2 large-block-grid-3 columns">
+      <ul class="small-block-grid-3 columns">
 
-      <li>
-        <div class="top-card">
-          <%= image_tag "cake_making.jpg" %>
-          <%= link_to "View Your Profile", current_user %>
-        </div>
-      </li>
+        <li>
+          <div class="top-card">
+            <%= image_tag "cake_making.jpg" %>
+            <%= link_to "View Your Profile", current_user %>
+          </div>
+        </li>
 
-      <li>
-        <div class="top-card">
-          <%= image_tag "fruit_stall.jpg" %>
-          <%= link_to "View a List of All Users", users_path %>
-        </div>
-      </li>
+        <li>
+          <div class="top-card">
+            <%= image_tag "fruit_stall.jpg", height: "187", width: "300" %>
+            <%= link_to "View a List of All Users", users_path %>
+          </div>
+        </li>
 
-      <li>
-        <div class="top-card">
-          <%= image_tag "autumn_fruits.jpg" %>
-          <%= link_to "View Your Profile", current_user %>
-          <p> Search for a User (coming soon) </p>
-        </div>
-      </li>
+        <li>
+          <div class="top-card">
+            <%= image_tag "autumn_fruits.jpg" %>
+            <%= link_to "View Your Profile", current_user %>
+            <p> Search for a User (coming soon) </p>
+          </div>
+        </li>
 
-    </ul>
+      </ul>
 
+
+  </div>
 </div>

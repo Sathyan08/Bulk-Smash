@@ -38,6 +38,11 @@
   height: 800px;
 }
 
+.bar {
+  margin-left: 2.65%;
+  margin-right: 3.0%;
+}
+
 footer{
   margin-bottom: 0;
   position: relative;
