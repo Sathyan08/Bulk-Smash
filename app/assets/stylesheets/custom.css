@@ -1,6 +1,6 @@
 .main {
   background: #F0F0F5;
-  height: 100%;
+  height: auto;
 }
 
 .card-content {
@@ -9,8 +9,22 @@
   height: 400px;
 }
 
+.content {
+  background: white;
+  padding: 1%;
+  height: auto;
+  margin: 1%;
+  overflow: scroll;
+
+}
+
+.home {
+  height: 800px;
+}
+
 footer{
   margin-bottom: 0;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 50px;
