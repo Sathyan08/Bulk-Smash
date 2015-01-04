@@ -1,7 +1,15 @@
-<h1>Bulk Purchase Unit:</h1>
+<div class ="top-content" >
+  <h1><%= @bulk.food.name %>'s Page</h1>
+</div>
 
-<p>Food: <%= @bulk.food.name %></p>
+<%= render 'foods/food_bar' %>
 
-<p>Amount: <%= @bulk.amount %></p>
+<div class="content">
+  <h1>Bulk Purchase Unit:</h1>
 
-<p>Price: <%= @bulk.price %></p>
+  <p>Food Name: <%= @bulk.food.name %></p>
+
+  <p>Amount: <%= @bulk.amount %></p>
+
+  <p>Price: <%= @bulk.price %></p>
+</div>
