@@ -6,21 +6,28 @@
         <li>
           <div class="top-card">
             <%= image_tag "cake_making.jpg" %>
-            <%= link_to "View Your Profile", current_user %>
+            <ul>
+              <li> <%= link_to "View Your Profile", current_user %> </li>
+              <li> <%= link_to "Create a New List", new_list_path %> </li>
+            </ul>
           </div>
         </li>
 
         <li>
           <div class="top-card">
             <%= image_tag "fruit_stall.jpg", height: "187", width: "300" %>
-            <%= link_to "View a List of All Users", users_path %>
+            <ul>
+              <li> <%= link_to "View a List of All Users", users_path %> </li>
+            <ul>
           </div>
         </li>
 
         <li>
           <div class="top-card">
             <%= image_tag "autumn_fruits.jpg" %>
-            <p> Search for a User (coming soon) </p>
+            <ul>
+              <li>Search for a User (coming soon)</li>
+            </ul>
           </div>
         </li>
 
