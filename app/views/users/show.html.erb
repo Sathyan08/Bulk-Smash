@@ -1,67 +1,80 @@
-<%= link_to "See All Users", users_path %>
+<div class="top-content">
 
-<h1><%= @user.email %></h1>
-<% unless current_user.friends.include?(@user) || @user == current_user %>
-  <%= link_to 'Send Friend Request', request_user_path(@user) %>
-<% end %>
-
-<ul>
-  <% @user.friends.each do |friend| %>
-    <li>
-      <%= link_to friend.email, user_path(friend) %> | <%= link_to 'Remove', remove_friendship_user_path(friend) %>
-    </li>
+  <h1><%= @user.email %>'s Profile Page</h1>
+  <% unless current_user.friends.include?(@user) || @user == current_user %>
+    <%= link_to 'Send Friend Request', request_user_path(@user) %>
   <% end %>
-</ul>
+</div>
+
+<%= render 'users/users_bar' %>
+
+<div class="content">
+  <h4><%= @user.email %>'s Friend List </h4>
+  <ul>
+    <% @user.friends.each do |friend| %>
+      <li>
+        <%= link_to friend.email, user_path(friend) %> | <%= link_to 'Remove', remove_friendship_user_path(friend) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <% if @user == current_user %>
-  <h1><%= @user.email %>'s Pending Friend Requests</h1>
-  <ul>
-    <% @user.friendships_received.unconfirmed.each do |friendship| %>
-      <%= friendship.user.email %>| <%= link_to 'Accept', accept_user_path(friendship.user) %>
-    <% end %>
-  </ul>
+  <div class="content">
+    <h4><%= @user.email %>'s Pending Friend Requests</h4>
+    <ul>
+      <% @user.friendships_received.unconfirmed.each do |friendship| %>
+        <%= friendship.user.email %>| <%= link_to 'Accept', accept_user_path(friendship.user) %>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
+<div class="content">
+  <h3>Recommendations: </h3>
+  <ul>
+    <% @user.recommendations.each do |item_name, item_attributes| %>
+      <li> <%= item_name %> | Bulk Units: <%= item_attributes[:bulk_total_amount] %> | Total Cost: <%= "$#{ sprintf('%.2f'%item_attributes[:bulk_total_price]) }" %>
 
-<h3>Recommendations: </h3>
-<ul>
-  <% @user.recommendations.each do |item_name, item_attributes| %>
-    <li> <%= item_name %> | Bulk Units: <%= item_attributes[:bulk_total_amount] %> | Total Cost: <%= "$#{ sprintf('%.2f'%item_attributes[:bulk_total_price]) }" %>
+        <ul>
+        <% item_attributes[:item_list].each do |item| %>
+          <li>  <%= item.list.user.email %> | Share: <%= "#{ sprintf('%.2f'%item.share).to_i }" %> <%= item.food.unit.name.pluralize(item.share) %> | Contribution: <%= " $#{ sprintf('%.2f'%item.contribution)}" %>
+          </li>
+        <% end %>
+        </ul>
 
-      <ul>
-      <% item_attributes[:item_list].each do |item| %>
-        <li>  <%= item.list.user.email %> | Share: <%= "#{ sprintf('%.2f'%item.share).to_i }" %> <%= item.food.unit.name.pluralize(item.share) %> | Contribution: <%= " $#{ sprintf('%.2f'%item.contribution)}" %>
-        </li>
-      <% end %>
-      </ul>
-
-    </li>
-  </ul>
-  <% end %>
-
-
-<h3>Matches:</h3>
-  <% @user.total_items_by_name.each do |matched_array| %>
-    <% matched_array.each do |item| %>
-      <li><%= item.food.name %> | <%= item.list.user.email %></li>
+      </li>
+    </ul>
     <% end %>
-  <% end %>
+</div>
 
-<h3>Current Items:</h3>
-  <% @user.items.each do |item| %>
-    <li><%= item.amount %> <%= item.food.unit.name.pluralize(item.amount) %> | <%= item.food.name %> </li>
-  <% end %>
+<div class="content">
+  <h3>Current Items:</h3>
+  <ul>
+    <% @user.items.each do |item| %>
+      <li><%= item.amount %> <%= item.food.unit.name.pluralize(item.amount) %> | <%= item.food.name %> </li>
+    <% end %>
+  </ul>
+</div>
 
-<h3><%= @user.email %>'s Current Grocery Lists:</h3>
-  <% @user.lists.current.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
+<div class="content">
+  <h3><%= @user.email %>'s Current Grocery Lists:</h3>
+  <ul>
+    <% @user.lists.current.each do |list| %>
+      <li><%= link_to list.name, list_path(list) %></li>
+    <% end %>
+  </ul>
+</div>
 
-<h3><%= @user.email %>'s Grocery Lists:</h3>
+<div class="content">
+  <h3><%= @user.email %>'s Grocery Lists:</h3>
 
-  <% @user.lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
+  <ul>
+    <% @user.lists.each do |list| %>
+      <li><%= link_to list.name, list_path(list) %></li>
+    <% end %>
+  </ul>
+</div>
 
 
 
