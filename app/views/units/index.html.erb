@@ -1,7 +1,16 @@
-<ul>
-  <% @units.each do |unit| %>
-    <li><%= link_to unit.name, unit_path(unit) %></li>
-  <% end %>
-</ul>
+<div class="top-content">
+  <h1>List of All Measurement Units</h1>
+</div>
 
-<%= link_to "Add Unit", new_unit_path %>
+<%= render "foods/food_bar" %>
+
+<%= render "foods/food_bar" %>
+
+<div class="content">
+  <h4>List of All Measurement Units:</h4>
+  <ul>
+    <% @units.each do |unit| %>
+      <li><%= link_to unit.name, unit_path(unit) %></li>
+    <% end %>
+  </ul>
+</div>

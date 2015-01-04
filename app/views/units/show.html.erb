@@ -1,11 +1,15 @@
-<h1><%= @unit.name %></h1>
+<div class="top-content">
+  <h1><%= @unit.name %></h1>
+</div>
 
-<h3>Foods Measured in <%= @unit.name.pluralize(@unit.foods.count) %></h3>
+<%= render "foods/food_bar" %>
+
+<div class="content">
+  <h3>Foods Measured in <%= @unit.name.pluralize(@unit.foods.count) %></h3>
 
   <ul>
     <% @unit.foods.each do |food| %>
       <li><%= link_to food.name, food_path(food) %></li>
     <% end %>
   </ul>
-
-<%= link_to "See All Units", units_path %>
+</div>
