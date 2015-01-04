@@ -3,12 +3,13 @@
     <ul class="title-area">
       <li class="name">
         <h1>
-          <a href="#">Bulk Smash!
-            <% if current_user %>
-              <span>
-                <%= current_user.email %>
-              </span>
-            <% end %>
+              <li>
+                <% if current_user %>
+                  <%= link_to "Bulk Smash! Welcome #{current_user.email}!", root_path %>
+                <% else %>
+                  <%= link_to "Bulk_Smash", root_path %>
+                <% end %>
+              </li>
           </a>
         </h1>
       </li>
@@ -25,6 +26,7 @@
           <li class="has-dropdown">
             <a href="#">Navigation</a>
             <ul class="dropdown">
+              <li> <%= link_to "Home Page", root_path %> </li>
               <li> <%= link_to "See All Users", users_path %> </li>
               <li> <%= link_to "Create a New List", new_list_path  %> </li>
               <li> <%= link_to "Add a New Food Type", new_food_path %> </li>
