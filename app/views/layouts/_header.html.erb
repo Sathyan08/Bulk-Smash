@@ -3,12 +3,13 @@
     <ul class="title-area">
       <li class="name">
         <h1>
-          <a href="#">Bulk Smash!
-            <% if current_user %>
-              <span>
-                <%= current_user.email %>
-              </span>
-            <% end %>
+              <li>
+                <% if current_user %>
+                  <%= link_to "Bulk Smash! Welcome #{current_user.email}!", root_path %>
+                <% else %>
+                  <%= link_to "Bulk_Smash", root_path %>
+                <% end %>
+              </li>
           </a>
         </h1>
       </li>
