@@ -1,20 +1,28 @@
-<h1><%= link_to "#{ @list.user.email }", @list.user %>'s List</h1>
+<div class="top-content">
+  <h1><%= link_to "#{ @list.user.email }", @list.user %>'s List</h1>
+</div>
 
+<%= render "users/users_bar" %>
+
+<div class="content">
   <ul>
     <% @list.list_items.each do |item| %>
       <li> <%= item.amount %> <%= item.food.unit.name.pluralize(item.amount) %> | <%= item.food.name %> </li>
     <% end %>
   </ul>
+</div>
 
-<% if @list.user == current_user %>
-    <h1>Add Items to Your List</h1>
+<div class="content">
+  <% if @list.user == current_user %>
+      <h1>Add Items to Your List</h1>
 
-  <%= simple_form_for([@list, @list.list_items.build]) do |f| %>
-    <%= f.association :food %>
-    <%= f.input :amount %>
-    <%= f.button :submit %>
+    <%= simple_form_for([@list, @list.list_items.build]) do |f| %>
+      <%= f.association :food %>
+      <%= f.input :amount %>
+      <%= f.button :submit %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 
 
