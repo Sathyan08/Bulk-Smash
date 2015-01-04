@@ -1,6 +1,8 @@
-<%= simple_form_for(bulk) do |f| %>
-  <%= f.association :food %>
-  <%= f.input :amount %>
-  <%= f.input :price %>
-  <%= f.button :submit %>
-<% end %>
+<div class="content">
+  <%= simple_form_for(bulk) do |f| %>
+    <%= f.association :food %>
+    <%= f.input :amount %>
+    <%= f.input :price %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
