@@ -1,3 +1,4 @@
+
 .main {
   background: #F0F0F5;
   height: auto;
@@ -37,6 +38,10 @@
 
 .home {
   height: 800px;
+}
+
+.home-top {
+  height: 40px;
 }
 
 .bar {
