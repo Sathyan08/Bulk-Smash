@@ -1,9 +1,15 @@
-<h1>List of All Foods</h1>
+<div class="top-content">
+  <h1>List of All Foods</h1>
+</div>
 
-<ul>
-  <% @foods.each do |food| %>
-    <li><%= link_to food.name, food_path(food) %></li>
-  <% end %>
-</ul>
+<%= render 'foods/food_bar' %>
 
-<%= link_to "Add a New Food", new_food_path %>
+<div class="content">
+  <h4>Foods:</h4>
+  <ul>
+    <% @foods.each do |food| %>
+      <li><%= link_to food.name, food_path(food) %></li>
+    <% end %>
+  </ul>
+</div>
+
