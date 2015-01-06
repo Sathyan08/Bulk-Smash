@@ -1,28 +1,32 @@
-== README
+Welcome to Bulk-Smash!  This app allows users to coordinate purchases with their roommates and neighbors so that they can save money buying goods in bulk.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1.  Setup
 
-Things you may want to cover:
+You can clone a local version of "Bulk Smash!" if you want to try it out.
 
-* Ruby version
+```
+git clone git@github.com:Sathyan1983/Bulk-Smash.git
+rake db:create
+rake db:migrate
+rake db:seed
+```
 
-* System dependencies
+2. Using the App
 
-* Configuration
+"Bulk Smash!" allows users to login using a fake or real email address and then add friends to their friend list.  Each user maintains grocery lists, and Bulk Smash will search for any common items on the lists of any two friends.  The app then recommends which goods each user can save money on by splitting a bulk purchase with a friend.
 
-* Database creation
+To see the app in action, perform the following steps.
 
-* Database initialization
+  A. Create an account using the "Sign Up" link in the top bar of the app.
 
-* How to run the test suite
+  B. Although the seed file adds some units to the database, go ahead and add any units of measurement that you think are necessary.  The database already has "pounds" and "ounces", so it might not be necessary.  Use the links on the home page or the dropdown menu in the upper right to go to the necessary page to add the units of measurement.
 
-* Services (job queues, cache servers, search engines, etc.)
+  C. Add any food items that you might to add to a grocery list.  The seed file already includes some items for you to use, but feel free to add more.
 
-* Deployment instructions
+  D. Look up any possible bulk purchases that you can add for any items that you added.  You will need to include the quantity of the bulk purchase along with the price.
 
-* ...
+  E. Create a new grocery list.  Make sure you mark it as "current" if you want Bulk Smash to search the list for items that you have in common with your friends.
 
+  F. Create a second account or have a friend create an account.  Then, send a friend request to this second account, and have the second account create a grocery list that has at least one item in common with the list that you previously created.
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  G. Go back to your first account and view your profile.  Bulk Smash should have made recommendations on how much each user should contribute to the bulk purchase and how much his or her share of it is.
