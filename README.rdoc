@@ -4,12 +4,12 @@ Welcome to Bulk-Smash!  This app allows users to coordinate purchases with their
 
 You can clone a local version of "Bulk Smash!" if you want to try it out.
 
-```
-git clone git@github.com:Sathyan1983/Bulk-Smash.git
-rake db:create
-rake db:migrate
-rake db:seed
-```
+
+A. git clone git@github.com:Sathyan1983/Bulk-Smash.git
+B. rake db:create
+C. rake db:migrate
+D. rake db:seed
+
 
 2. Using the App
 
