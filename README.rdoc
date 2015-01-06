@@ -6,8 +6,11 @@ You can clone a local version of "Bulk Smash!" if you want to try it out.
 
 
 git clone git@github.com:Sathyan1983/Bulk-Smash.git
+
 rake db:create
+
 rake db:migrate
+
 rake db:seed
 
 
