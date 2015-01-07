@@ -1,4 +1,6 @@
 class FriendshipsController < ApplicationController
+  before_action :authenticate_user!
+
   def send_request
     @request = Friendship.find_or_initialize_by(
       user_id: current_user.id,

@@ -1,4 +1,5 @@
 class ListItemsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @list_item = ListItem.new

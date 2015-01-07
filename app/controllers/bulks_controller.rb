@@ -1,4 +1,5 @@
 class BulksController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @bulks = Bulk.all
