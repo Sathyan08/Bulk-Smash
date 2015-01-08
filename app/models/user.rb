@@ -43,14 +43,6 @@ class User < ActiveRecord::Base
     items + friend_items
   end
 
-  def find_all_items_with(name)
-    total_items.find_all { |item| item.food.name == name }
-  end
-
-  def total_items_by_name
-    item_names.inject([ ]) { |matches, name| matches << find_all_items_with(name) }
-  end
-
   def total_items_summed
     item_hash = { }
     total_items.each do |item|
