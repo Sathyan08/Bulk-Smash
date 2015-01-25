@@ -1,4 +1,5 @@
 class UnitsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @units = Unit.all
